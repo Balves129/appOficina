@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button href=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>detalhes-produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge="true">
+  <ion-fab-button  (click)="deletar()">
+    <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+    </ion-fab>
+  <div></div>
+  <ion-item *ngIf = "!modoDeEdicao"> {{prodSelecionado.id}}</ion-item>
+  <ion-item *ngIf = "!modoDeEdicao">{{prodSelecionado.nome}}</ion-item>
+  <ion-item *ngIf = "!modoDeEdicao">R$ {{prodSelecionado.valor}}</ion-item>
+
+  
+    <ion-button *ngIf="!modoDeEdicao" (click)="iniciarEdicao()" shape="block">Alterar Dados</ion-button>
+
+    <form *ngIf="modoDeEdicao">
+      <ion-item>
+        <ion-label position="floating">Nome:</ion-label>
+        <ion-input [(ngModel)]= "prodSelecionado.nome" name="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Valor:</ion-label>
+        <ion-input [(ngModel)]= "prodSelecionado.valor" name="valor"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="encerrarEdicao()" shape="block" routerLink="/listagem-produto">gravar</ion-button>
+
+    </form>
+  
+  
+
+</ion-content>
